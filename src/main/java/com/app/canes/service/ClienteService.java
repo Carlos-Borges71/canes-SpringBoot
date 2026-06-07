@@ -7,21 +7,17 @@ package com.app.canes.service;
 import com.app.canes.model.Cliente;
 import com.app.canes.model.Produto;
 
-
-
-
-
 public class ClienteService {
-    
-     public void salvar(Cliente cliente) {
 
-        if (cliente.getNome() == null ||
-            cliente.getNome().isBlank()) {
+    public void salvar(Cliente cliente) {
+
+        if (cliente.getNome() == null
+                || cliente.getNome().isBlank()) {
 
             throw new RuntimeException("Nome obrigatório");
         }
 
-           System.out.println("=== CLIENTE CADASTRADO ===");
+        System.out.println("=== CLIENTE CADASTRADO ===");
         System.out.println("Nome: " + cliente.getNome());
         System.out.println("Telefone: " + cliente.getTelefone().getNumero());
         System.out.println("Cidade: " + cliente.getEndereco().getCidade());
@@ -39,7 +35,11 @@ public class ClienteService {
             );
         }
     }
-     
-     
+
+    public boolean validarNome(String nome) {
+
+        return nome != null
+                && !nome.trim().isEmpty();
+    }
 
 }

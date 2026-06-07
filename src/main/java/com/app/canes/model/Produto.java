@@ -5,15 +5,16 @@ package com.app.canes.model;
  * @author Carlos Borges
  */
 public class Produto {
+
     private Integer id;
     private int codigo;
     private String nome;
     private int estoque;
     private Double valor;
-    
-    public Produto(){
 
-}
+    public Produto() {
+
+    }
 
     public Produto(Integer id, int codigo, String nome, int estoque, Double valor) {
         this.id = id;
@@ -21,6 +22,10 @@ public class Produto {
         this.nome = nome;
         this.estoque = estoque;
         this.valor = valor;
+    }
+
+    public Double calcularValorTotalEstoque() {
+        return valor * estoque;
     }
 
     public Integer getId() {
@@ -63,7 +68,4 @@ public class Produto {
         this.valor = valor;
     }
 
-    
 }
-
-
