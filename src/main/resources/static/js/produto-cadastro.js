@@ -1,46 +1,51 @@
 document
-.getElementById("formProduto")
-.addEventListener("submit", function(event){
+        .getElementById("formProduto")
+        .addEventListener("submit", function (event) {
 
-    event.preventDefault();
+            event.preventDefault();
 
-    let produto =
-        document.getElementById("produto").value;
+            let produto =
+                    document.getElementById("produto").value;
 
-    let codigo =
-        document.getElementById("codigo").value;
+            let codigo =
+                    document.getElementById("codigo").value;
 
-    let quantidade =
-        document.getElementById("quantidade").value;
+            let quantidade =
+                    document.getElementById("quantidade").value;
 
-    let valor =
-        document.getElementById("valor").value;
+            let valor =
+                    document.getElementById("valor").value;
 
-    if(produto.trim() === ""){
+            if (produto.trim() === "") {
 
-        alert("Informe o produto");
-        return;
-    }
+                alert("Informe o produto");
+                return;
+            }
 
-    if(codigo.trim() === ""){
+            if (codigo.trim() === "") {
 
-        alert("Informe o código");
-        return;
-    }
+                alert("Informe o código");
+                return;
+            }
 
-    if(quantidade.trim() === ""){
+            if (quantidade.trim() === "") {
 
-        alert("Informe a quantidade");
-        return;
-    }
+                alert("Informe a quantidade");
+                return;
+            }
 
-    if(valor.trim() === ""){
+            if (valor.trim() === "") {
 
-        alert("Informe o valor");
-        return;
-    }
+                alert("Informe o valor");
+                return;
+            }
 
-    alert("Produto cadastrado com sucesso!");
+            alert("Produto cadastrado com sucesso!");
 
-});
+            window.location.href = "/produtos";
+        });
+        
+        function voltar(){
+            window.location.href = "/produtos";
+        }
 

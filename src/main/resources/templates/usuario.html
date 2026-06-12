@@ -31,12 +31,21 @@
 
             <section class="titulo">
 
-                <h1>Usuários</h1>
+                <h1>Usuário</h1>
 
-                <button class="btn-novo">
-                    <i class="bi bi-plus-circle"></i>
-                    Novo Usuário
-                </button>
+                <div class="acoes">
+                    <button class="btn-novo"
+                            onclick="novousuario()">
+                        <i class="bi bi-plus-circle"></i>
+                        Novo usuário
+                    </button>
+
+                    <button class="btn-voltar"
+                            onclick="voltar()">
+                        <i class="bi bi-arrow-left"></i>
+                        Voltar
+                    </button>
+                </div>
 
             </section>
 
@@ -48,6 +57,7 @@
 
                     <input
                         type="text"
+                        id="txtPesquisa"
                         placeholder="Pesquisar">
 
                 </div>
@@ -56,7 +66,7 @@
 
             <section class="tabela">
 
-                <table>
+                <table id="tblUsuarios">
 
                     <thead>
 
@@ -96,6 +106,28 @@
                             </td>
 
                         </tr>
+                        
+                        <tr>
+
+                            <td>2</td>
+                            <td>Rui Castro</td>
+                            <td>Administração</td>
+                            <td>rui</td>
+                            <td>(23) 45456-9898</td>
+
+                            <td>
+
+                                <button class="btn-editar">
+                                    <i class="bi bi-pencil"></i>
+                                </button>
+
+                                <button class="btn-excluir">
+                                    <i class="bi bi-trash"></i>
+                                </button>
+
+                            </td>
+
+                        </tr>
 
                     </tbody>
 
@@ -105,7 +137,7 @@
 
         </main>
 
-        <script src="js/usuarios.js"></script>
+        <script src="js/usuario.js"></script>
 
     </body>
 </html>

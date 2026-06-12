@@ -1,22 +1,36 @@
-document.addEventListener("DOMContentLoaded", () => {
+const pesquisa = document
+        .getElementById("txtPesquisa");
 
-    console.log("Tela Produtos carregada");
+pesquisa.addEventListener("keyup", () => {
+
+    let filtro =
+            pesquisa.value.toLowerCase();
+
+    let linhas =
+            document.querySelectorAll(
+                    "#tblProduto tbody tr"
+                    );
+
+    linhas.forEach(linha => {
+
+        let textoLinha =
+                linha.textContent.toLowerCase();
+
+        linha.style.display =
+                textoLinha.includes(filtro)
+                ? ""
+                : "none";
+
+    });
 
 });
 
-function excluirProduto(id){
-
-    if(confirm("Deseja excluir o produto?")){
-
-        alert("Produto " + id + " excluído");
-    }
-
+function voltar(){
+   
+    window.location.href="/menu";
 }
 
-function editarProduto(id){
-
-    alert("Editar produto " + id);
-
+function novoProduto(){
+   
+    window.location.href="/cadastro_produto";
 }
-
-

@@ -97,6 +97,7 @@ main{
 }
 
 .btn-novo:hover,
+.btn-voltar:hover,
 .btn-primary:hover{
 
     background:#1d4ed8;
@@ -375,4 +376,105 @@ tbody tr:hover{
 .login-card button{
 
     width:100%;
+}
+
+.acoes{
+    display:flex;
+    flex-direction:column;
+    gap:10px;
+}
+
+.btn-voltar{
+    border:none;
+    background:#6b7280;
+    color:white;
+    padding:12px 20px;
+    border-radius:10px;
+    cursor:pointer;
+}
+
+/* LOGIN */
+
+.login-container{
+
+    min-height:100vh;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    gap:60px;
+
+    padding:30px;
+}
+
+.logo-area{
+
+    text-align:center;
+}
+
+.logo{
+
+    max-width:280px;
+    width:100%;
+}
+
+.login-area{
+
+    width:100%;
+    max-width:450px;
+}
+
+.login-card{
+
+    background:white;
+
+    padding:40px;
+
+    border-radius:20px;
+
+    box-shadow:0 10px 30px rgba(0,0,0,.15);
+}
+
+.login-card h2{
+
+    text-align:center;
+
+    margin-bottom:30px;
+}
+
+.login-card .form-group{
+
+    margin-bottom:20px;
+}
+
+.login-card label{
+
+    display:block;
+
+    margin-bottom:8px;
+
+    font-weight:600;
+}
+
+.login-card input{
+
+    width:100%;
+
+    padding:12px;
+
+    border:1px solid #d1d5db;
+
+    border-radius:10px;
+}
+
+.login-card button{
+
+    width:100%;
+}
+
+.text-azul{
+    color:#2563eb;
 }

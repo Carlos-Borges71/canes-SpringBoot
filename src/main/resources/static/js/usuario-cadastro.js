@@ -32,13 +32,12 @@ document
 
     alert("Usuário cadastrado com sucesso!");
 
+     window.location.href="/usuarios";
 });
 
-function limparCampos(){
+function voltar(){
 
-    document
-    .getElementById("formUsuario")
-    .reset();
+    window.location.href="/usuarios";
 }
 
 

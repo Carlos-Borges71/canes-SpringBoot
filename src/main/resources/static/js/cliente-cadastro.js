@@ -86,6 +86,10 @@ document
 
     alert("Cliente cadastrado com sucesso!");
 
+    window.location.href="/clientes";
 });
 
+function voltar(){
+    window.location.href="/clientes";
+}
 

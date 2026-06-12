@@ -33,12 +33,22 @@
 
             <section class="titulo">
 
-                <h1>Clientes</h1>
+                <h1>Cliente</h1>
 
-                <button class="btn-novo">
-                    <i class="bi bi-plus-circle"></i>
-                    Novo Cliente
-                </button>
+                <div class="acoes">
+                    <button class="btn-novo"
+                            onclick="novoCliente()">
+                        <i class="bi bi-plus-circle"></i>
+                        Novo Cliente
+                    </button>
+
+                    <button class="btn-voltar"
+                            onclick="voltar()">
+                        <i class="bi bi-arrow-left"></i>
+                        
+                        Voltar
+                    </button>
+                </div>
 
             </section>
 
@@ -50,6 +60,7 @@
 
                     <input
                         type="text"
+                        id="txtPesquisa"
                         placeholder="Pesquisar">
 
                 </div>
@@ -81,7 +92,7 @@
 
                             <td>1</td>
                             <td>Carlos Borges</td>
-                            <td>21999999999</td>
+                            <td>(21)999999999</td>
                             <td>Rio de Janeiro</td>
                             <td>RJ</td>
 
@@ -102,6 +113,34 @@
                             </td>
 
                         </tr>
+                        
+                        <tr>
+
+                            <td>2</td>
+                            <td>Sebastião gomes</td>
+                            <td>(21) 90000-9090</td>
+                            <td>Rio de Janeiro</td>
+                            <td>RJ</td>
+
+                            <td>
+
+                                <button class="btn-editar">
+
+                                    <i class="bi bi-pencil"></i>
+
+                                </button>
+
+                                <button class="btn-excluir">
+
+                                    <i class="bi bi-trash"></i>
+
+                                </button>
+
+                            </td>
+
+                        </tr>
+                        
+                        
 
                     </tbody>
 
@@ -111,7 +150,7 @@
 
         </main>
 
-        <script src="js/clientes.js"></script>
+        <script src="js/cliente.js"></script>
 
     </body>
 </html>
