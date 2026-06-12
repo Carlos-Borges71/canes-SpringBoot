@@ -1,49 +1,37 @@
-package com.app.canes.model;
-
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
-
-/**
- *
- * @author Carlos Borges
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-@Entity
-@Table(name = "endereco")
-public class Endereco {
+package com.app.canes.model.dto;
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+public class ClienteForm {
+
+    private String nome;
+    private String telefone;
+
     private String logradouro;
     private String numero;
     private String bairro;
     private String cidade;
     private String estado;
     private String cep;
-    
-    public Endereco(){
-        
+
+    // getters e setters
+
+    public String getNome() {
+        return nome;
     }
 
-    public Endereco(Integer id, String logradouro, String numero, String bairro, String cidade, String estado, String cep) {
-        this.id = id;
-        this.logradouro = logradouro;
-        this.numero = numero;
-        this.bairro = bairro;
-        this.cidade = cidade;
-        this.estado = estado;
-        this.cep = cep;
+    public void setNome(String nome) {
+        this.nome = nome;
     }
 
-    public Integer getId() {
-        return id;
+    public String getTelefone() {
+        return telefone;
     }
 
-    public void setId(Integer id) {
-        this.id = id;
+    public void setTelefone(String telefone) {
+        this.telefone = telefone;
     }
 
     public String getLogradouro() {
@@ -93,8 +81,5 @@ public class Endereco {
     public void setCep(String cep) {
         this.cep = cep;
     }
-
-   
+    
 }
-
-

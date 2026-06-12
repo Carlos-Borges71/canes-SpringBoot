@@ -1,5 +1,6 @@
-<!DOCTYPE html>
-<html lang="pt-br">
+<!DOCTYPE html >
+<html lang="pt-br"
+      xmlns:th="http://www.thymeleaf.org"> 
     <head>
 
         <meta charset="UTF-8">
@@ -45,7 +46,7 @@
                     <button class="btn-voltar"
                             onclick="voltar()">
                         <i class="bi bi-arrow-left"></i>
-                        
+
                         Voltar
                     </button>
                 </div>
@@ -88,59 +89,31 @@
 
                     <tbody>
 
-                        <tr>
+                        <tr th:each="cliente : ${clientes}">
 
-                            <td>1</td>
-                            <td>Carlos Borges</td>
-                            <td>(21)999999999</td>
-                            <td>Rio de Janeiro</td>
-                            <td>RJ</td>
+                            <td th:text="${cliente.id}"></td>
+
+                            <td th:text="${cliente.nome}"></td>
+
+                            <td th:text="${cliente.telefone.numero}"></td>
+
+                            <td th:text="${cliente.endereco.cidade}"></td>
+
+                            <td th:text="${cliente.endereco.estado}"></td>
 
                             <td>
 
                                 <button class="btn-editar">
-
                                     <i class="bi bi-pencil"></i>
-
                                 </button>
 
                                 <button class="btn-excluir">
-
                                     <i class="bi bi-trash"></i>
-
                                 </button>
 
                             </td>
 
                         </tr>
-                        
-                        <tr>
-
-                            <td>2</td>
-                            <td>Sebastião gomes</td>
-                            <td>(21) 90000-9090</td>
-                            <td>Rio de Janeiro</td>
-                            <td>RJ</td>
-
-                            <td>
-
-                                <button class="btn-editar">
-
-                                    <i class="bi bi-pencil"></i>
-
-                                </button>
-
-                                <button class="btn-excluir">
-
-                                    <i class="bi bi-trash"></i>
-
-                                </button>
-
-                            </td>
-
-                        </tr>
-                        
-                        
 
                     </tbody>
 

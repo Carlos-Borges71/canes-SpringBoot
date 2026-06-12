@@ -1,5 +1,16 @@
 package com.app.canes.model;
 
+import jakarta.persistence.CascadeType;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.JoinTable;
+import jakarta.persistence.ManyToMany;
+import jakarta.persistence.OneToOne;
+import jakarta.persistence.Temporal;
+import jakarta.persistence.TemporalType;
 import java.util.Date;
 import java.util.List;
 
@@ -7,15 +18,36 @@ import java.util.List;
  *
  * @author Carlos Borges
  */
-public class Cliente implements PessoaContato{
+@Entity
+public class Cliente implements PessoaContato {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
+
     private String nome;
+
+    @Temporal(TemporalType.DATE)
     private Date data;
+
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "telefone_id")
     private Telefone telefone;
+
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "endereco_id")
     private Endereco endereco;
-    private List<Produto> produto;
-    public Cliente(){
-        
+
+    @ManyToMany
+    @JoinTable(
+            name = "cliente_produto",
+            joinColumns = @JoinColumn(name = "cliente_id"),
+            inverseJoinColumns = @JoinColumn(name = "produto_id")
+    )
+    private List<Produto> produtos;
+
+    public Cliente() {
+
     }
 
     public Cliente(Integer id, String nome, Date data, Telefone telefone, Endereco endereco) {
@@ -51,7 +83,6 @@ public class Cliente implements PessoaContato{
         this.data = data;
     }
 
-   
     @Override
     public Endereco getEndereco() {
         return endereco;
@@ -70,15 +101,12 @@ public class Cliente implements PessoaContato{
         this.endereco = endereco;
     }
 
-    public List<Produto> getProduto() {
-        return produto;
+    public List<Produto> getProdutos() {
+        return produtos;
     }
 
-    public void setProduto(List<Produto> produto) {
-        this.produto = produto;
+    public void setProdutos(List<Produto> produtos) {
+        this.produtos = produtos;
     }
-    
-    
-    
+
 }
-

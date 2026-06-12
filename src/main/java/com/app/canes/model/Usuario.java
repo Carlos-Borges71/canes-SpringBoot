@@ -1,21 +1,49 @@
 
 package com.app.canes.model;
 
+import jakarta.persistence.CascadeType;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.OneToOne;
+import jakarta.persistence.Table;
+import jakarta.persistence.Temporal;
+import jakarta.persistence.TemporalType;
 import java.util.Date;
 
 /**
  *
  * @author Carlos Borges
  */
-public class Usuario implements PessoaContato{
-    
+@Entity
+@Table(name = "usuario")
+public class Usuario implements PessoaContato {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
+
     private String nome;
-    private String setor;    
+
+    private String setor;
+
+    @Column(unique = true)
     private String login;
+
+    @Temporal(TemporalType.TIMESTAMP)
     private Date data;
+
     private String senha;
+
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "telefone_id")
     private Telefone telefone;
+
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "endereco_id")
     private Endereco endereco;
     
     public Usuario(){        

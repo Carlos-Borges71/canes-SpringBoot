@@ -4,42 +4,60 @@
  */
 package com.app.canes.service;
 
+
 import com.app.canes.model.Cliente;
-import com.app.canes.model.Produto;
+import com.app.canes.repository.ClienteRepository;
+import java.util.List;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
+
+
+
+@Service
 public class ClienteService {
+    
+    
+    @Autowired
+    private ClienteRepository clienteRepository;
 
-    public void salvar(Cliente cliente) {
+    
 
-        if (cliente.getNome() == null
-                || cliente.getNome().isBlank()) {
+    public Cliente salvar(Cliente cliente) {
 
-            throw new RuntimeException("Nome obrigatório");
-        }
-
-        System.out.println("=== CLIENTE CADASTRADO ===");
-        System.out.println("Nome: " + cliente.getNome());
-        System.out.println("Telefone: " + cliente.getTelefone().getNumero());
-        System.out.println("Cidade: " + cliente.getEndereco().getCidade());
-
-        System.out.println("\nProdutos:");
-
-        for (Produto produto : cliente.getProduto()) {
-
-            System.out.println(
-                    produto.getCodigo()
-                    + " - "
-                    + produto.getNome()
-                    + " - R$ "
-                    + produto.getValor()
-            );
-        }
+        return clienteRepository.save(cliente);
     }
 
-    public boolean validarNome(String nome) {
+    public Cliente buscarPorId(Integer id) {
 
-        return nome != null
-                && !nome.trim().isEmpty();
+        return clienteRepository.findById(id)
+                .orElseThrow(()
+                        -> new RuntimeException("Cliente não encontrado"));
+    }
+
+    public List<Cliente> listarTodos() {
+
+        return clienteRepository.findAll();
+    }
+
+    public Cliente atualizar(Integer id, Cliente clienteAtualizado) {
+
+        Cliente clienteExistente = clienteRepository.findById(id)
+                .orElseThrow(()
+                        -> new RuntimeException("Cliente não encontrado"));
+
+        clienteExistente.setNome(clienteAtualizado.getNome());
+        clienteExistente.setTelefone(clienteAtualizado.getTelefone());
+        clienteExistente.setEndereco(clienteAtualizado.getEndereco());
+
+        return clienteRepository.save(clienteExistente);
+    }
+
+    public void excluir(Integer id) {
+
+        Cliente cliente = buscarPorId(id);
+
+        clienteRepository.delete(cliente);
     }
 
 }

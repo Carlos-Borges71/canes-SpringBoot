@@ -14,10 +14,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 @Controller
 public class PaginaController {
     
-    @GetMapping("/clientes")
-    public String cliente() {
-        return "cliente";
-    }
+    
 
     @GetMapping("/")
     public String inicio() {
