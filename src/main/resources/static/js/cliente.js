@@ -1,3 +1,12 @@
+document
+        .addEventListener("DOMContentLoaded", () => {
+    const campoPesquisa = document.getElementById("txtPesquisa");
+
+    if (campoPesquisa) {
+        campoPesquisa.focus();
+    }
+});
+
 const pesquisa = document
         .getElementById("txtPesquisa");
 
@@ -32,4 +41,24 @@ function voltar() {
 function novoCliente() {
     window.location.href = "/cadastro_cliente";
 }
+
+function prepararExclusao(botao) {
+
+    const id = botao.dataset.id;
+    const nome = botao.dataset.nome;
+
+    document.getElementById("nomeCliente")
+            .textContent = nome;
+
+    document.getElementById("btnConfirmarExcluir")
+            .href = "/clientes/excluir/" + id;
+}
+
+const modalExcluir = document.getElementById('modalExcluir');
+
+modalExcluir.addEventListener('hidden.bs.modal', function () {
+
+    document.querySelector('.btn-novo').focus();
+
+});
 

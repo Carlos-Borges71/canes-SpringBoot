@@ -8,6 +8,7 @@ import com.app.canes.model.Usuario;
 import com.app.canes.repository.UsuarioRepository;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 /**
@@ -34,7 +35,9 @@ public class UsuarioService {
 
     public List<Usuario> listarTodos() {
 
-        return usuarioRepository.findAll();
+        return usuarioRepository.findAll(
+                Sort.by(Sort.Direction.DESC, "id"
+                ));
     }
 
     public Usuario atualizar(Integer id, Usuario usuarioAtualizado) {

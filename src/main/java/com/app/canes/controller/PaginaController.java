@@ -26,6 +26,11 @@ public class PaginaController {
         return "cliente-cadastro";
     }
     
+     @GetMapping("/cadastro_usuario")
+    public String cadastro_usuario() {
+        return "usuario-cadastro";
+    }
+    
     @GetMapping("/cadastro_produto")
     public String cadastro_produto() {
         return "cadastro-produto";
@@ -36,15 +41,7 @@ public class PaginaController {
         return "produto";
     }
     
-    @GetMapping("/usuarios")
-    public String usuario() {
-        return "usuario";
-    }
-    
-    @GetMapping("/cadastro_usuario")
-    public String usuario_cadastro() {
-        return "usuario-cadastro";
-    }
+   
     
     @GetMapping("/login")
     public String login() {

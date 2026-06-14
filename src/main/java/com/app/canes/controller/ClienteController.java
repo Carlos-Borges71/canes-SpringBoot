@@ -9,11 +9,14 @@ import com.app.canes.model.Endereco;
 import com.app.canes.model.Telefone;
 import com.app.canes.model.dto.ClienteForm;
 import com.app.canes.service.ClienteService;
+import jakarta.validation.Valid;
 import java.util.Date;
 import java.util.List;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -35,42 +38,70 @@ public class ClienteController {
     public String listarClientes(Model model) {
 
         List<Cliente> clientes = service.listarTodos();
-
-        System.out.println("Clientes encontrados: " + clientes.size());
-
         model.addAttribute("clientes", clientes);
 
         return "cliente";
     }
 
     @PostMapping("/salvar")
-    public String salvar(ClienteForm form) {
+   public String salvar(
+        @Valid ClienteForm form,
+        BindingResult result) {
 
-        Telefone telefone
-                = new Telefone(null, form.getTelefone());
+    if (result.hasErrors()) {
+        return "cliente-cadastro";
+    }
+        
+        Cliente cliente;
 
-        Endereco endereco
-                = new Endereco(
-                        null,
-                        form.getLogradouro(),
-                        form.getNumero(),
-                        form.getBairro(),
-                        form.getCidade(),
-                        form.getEstado(),
-                        form.getCep()
-                );
+        if (form.getId() != null) {
 
-        Cliente cliente
-                = new Cliente(
-                        null,
-                        form.getNome(),
-                        new Date(),
-                        telefone,
-                        endereco
-                );
+            cliente = service.buscarPorId(form.getId());
+
+        } else {
+
+            cliente = new Cliente();
+            cliente.setData(new Date());
+
+            if (cliente.getTelefone() == null) {
+                cliente.setTelefone(new Telefone());
+            }
+
+            if (cliente.getEndereco() == null) {
+                cliente.setEndereco(new Endereco());
+            }
+        }
+
+        cliente.setNome(form.getNome());
+
+        cliente.getTelefone().setNumero(form.getTelefone());
+
+        cliente.getEndereco().setLogradouro(form.getLogradouro());
+        cliente.getEndereco().setNumero(form.getNumero());
+        cliente.getEndereco().setBairro(form.getBairro());
+        cliente.getEndereco().setCidade(form.getCidade());
+        cliente.getEndereco().setEstado(form.getEstado());
+        cliente.getEndereco().setCep(form.getCep());
 
         service.salvar(cliente);
 
         return "redirect:/clientes";
     }
+    
+    @GetMapping("/editar/{id}") 
+    public String editar(@PathVariable Integer id, Model model) { 
+        
+        Cliente cliente = service.buscarPorId(id);         
+        model.addAttribute("cliente", cliente); 
+        return "cliente-cadastro"; 
+    }
+
+    @GetMapping("/excluir/{id}")
+    public String excluir(@PathVariable Integer id) {
+
+        service.excluir(id);
+
+        return "redirect:/clientes";
+    }
+
 }

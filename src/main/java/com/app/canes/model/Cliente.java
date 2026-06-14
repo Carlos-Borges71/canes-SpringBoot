@@ -48,6 +48,8 @@ public class Cliente implements PessoaContato {
 
     public Cliente() {
 
+        this.telefone = new Telefone();
+        this.endereco = new Endereco();
     }
 
     public Cliente(Integer id, String nome, Date data, Telefone telefone, Endereco endereco) {

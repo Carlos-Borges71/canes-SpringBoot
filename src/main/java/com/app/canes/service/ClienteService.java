@@ -9,6 +9,7 @@ import com.app.canes.model.Cliente;
 import com.app.canes.repository.ClienteRepository;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 
@@ -37,7 +38,9 @@ public class ClienteService {
 
     public List<Cliente> listarTodos() {
 
-        return clienteRepository.findAll();
+        return clienteRepository.findAll( 
+                Sort.by(Sort.Direction.DESC, "id"
+                ));
     }
 
     public Cliente atualizar(Integer id, Cliente clienteAtualizado) {

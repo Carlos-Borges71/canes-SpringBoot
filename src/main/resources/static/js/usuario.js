@@ -29,6 +29,28 @@ function voltar(){
     window.location.href="/menu";
 }
 
-function novousuario(){
-    window.location.href="/cadastro_usuario";
+
+
+function novoUsuario() {
+    window.location.href = "/cadastro_usuario";
 }
+
+function prepararExclusao(botao) {
+
+    const id = botao.dataset.id;
+    const nome = botao.dataset.nome;
+
+    document.getElementById("nomeUsuario")
+            .textContent = nome;
+
+    document.getElementById("btnConfirmarExcluir")
+            .href = "/usuarios/excluir/" + id;
+}
+
+const modalExcluir = document.getElementById('modalExcluir');
+
+modalExcluir.addEventListener('hidden.bs.modal', function () {
+
+    document.querySelector('.btn-novo').focus();
+
+});

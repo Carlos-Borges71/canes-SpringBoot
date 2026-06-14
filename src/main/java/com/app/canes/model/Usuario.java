@@ -116,6 +116,14 @@ public class Usuario implements PessoaContato {
     public Endereco getEndereco() {
         return endereco;
     }
+
+    public void setTelefone(Telefone telefone) {
+        this.telefone = telefone;
+    }
+
+    public void setEndereco(Endereco endereco) {
+        this.endereco = endereco;
+    }
     
- 
+    
 }

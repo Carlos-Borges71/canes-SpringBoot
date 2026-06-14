@@ -6,7 +6,7 @@ package com.app.canes.model.dto;
 
 import jakarta.validation.constraints.NotBlank;
 
-public class ClienteForm {
+public class UsuarioForm {
 
     private Integer id;
 
@@ -14,6 +14,12 @@ public class ClienteForm {
     private String nome;
     @NotBlank(message = "Informe o telefone")
     private String telefone;
+    @NotBlank(message = "Infome o setor")
+    private String setor;
+    @NotBlank(message = "Infome o login")
+    private String login;
+    @NotBlank(message = "Infome o senha")
+    private String senha;
     @NotBlank(message = "Informe o logradouro")
     private String logradouro;
     @NotBlank(message = "Informe o numero")
@@ -98,6 +104,30 @@ public class ClienteForm {
 
     public void setId(Integer id) {
         this.id = id;
+    }
+
+    public String getSetor() {
+        return setor;
+    }
+
+    public void setSetor(String setor) {
+        this.setor = setor;
+    }
+
+    public String getLogin() {
+        return login;
+    }
+
+    public void setLogin(String login) {
+        this.login = login;
+    }
+
+    public String getSenha() {
+        return senha;
+    }
+
+    public void setSenha(String senha) {
+        this.senha = senha;
     }
 
 }
