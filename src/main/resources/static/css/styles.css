@@ -519,3 +519,9 @@ tbody tr:hover{
 .text-azul{
     color:#2563eb;
 }
+
+.disabled {
+    pointer-events: none;
+    opacity: 0.5;
+    cursor: not-allowed;
+}

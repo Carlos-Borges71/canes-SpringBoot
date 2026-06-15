@@ -1,51 +1,64 @@
 document
-        .getElementById("formProduto")
+        .addEventListener("DOMContentLoaded", () => {
+            const campoNome = document.getElementById("nome");
+
+            if (campoNome) {
+                campoNome.focus();
+            }
+        });
+        
+
+document
+        .querySelector("form")
         .addEventListener("submit", function (event) {
 
-            event.preventDefault();
-
-            let produto =
-                    document.getElementById("produto").value;
+          
+            let nome =
+                    document.getElementById("nome").value;
 
             let codigo =
                     document.getElementById("codigo").value;
 
-            let quantidade =
-                    document.getElementById("quantidade").value;
+            let estoque =
+                    document.getElementById("estoque").value;
 
             let valor =
                     document.getElementById("valor").value;
 
-            if (produto.trim() === "") {
+            if (nome.trim() === "") {
 
-                alert("Informe o produto");
+                mostrarToast("Informe o produto");
+                event.preventDefault();
                 return;
             }
 
             if (codigo.trim() === "") {
 
-                alert("Informe o código");
+                mostrarToast("Informe o código");
+                event.preventDefault();
                 return;
             }
 
-            if (quantidade.trim() === "") {
+            if (estoque.trim() === "") {
 
-                alert("Informe a quantidade");
+                mostrarToast("Informe a quantidade");
+                event.preventDefault();
                 return;
             }
 
             if (valor.trim() === "") {
 
-                alert("Informe o valor");
+                mostrarToast("Informe o valor");
+                event.preventDefault();
                 return;
             }
 
-            alert("Produto cadastrado com sucesso!");
+            mostrarToast("Produto cadastrado com sucesso!");
 
-            window.location.href = "/produtos";
+            
         });
-        
-        function voltar(){
-            window.location.href = "/produtos";
-        }
+
+function voltar() {
+    window.location.href = "/produtos";
+}
 

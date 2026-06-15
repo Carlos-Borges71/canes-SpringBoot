@@ -1,10 +1,17 @@
 package com.app.canes.model;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
+import jakarta.persistence.Transient;
+import java.text.NumberFormat;
+import java.util.Locale;
+
 
 /**
  *
@@ -20,7 +27,13 @@ public class Produto {
     private int codigo;
     private String nome;
     private int estoque;
+
+  
     private Double valor;
+
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "cliente_id")
+    private Cliente cliente;
 
     public Produto() {
 
@@ -36,6 +49,13 @@ public class Produto {
 
     public Double calcularValorTotalEstoque() {
         return valor * estoque;
+    }
+
+    @Transient
+    public String getValorFormatado() {
+        return NumberFormat
+                .getCurrencyInstance(new Locale("pt", "BR"))
+                .format(valor);
     }
 
     public Integer getId() {
@@ -76,6 +96,14 @@ public class Produto {
 
     public void setValor(Double valor) {
         this.valor = valor;
+    }
+
+    public Cliente getCliente() {
+        return cliente;
+    }
+
+    public void setCliente(Cliente cliente) {
+        this.cliente = cliente;
     }
 
 }

@@ -8,6 +8,7 @@ import com.app.canes.model.Produto;
 import com.app.canes.repository.ProdutoRepository;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 
@@ -26,7 +27,13 @@ public class ProdutoService {
 
     public Produto salvar(Produto produto) {
 
+        try{
         return produtoRepository.save(produto);
+        }catch(Exception e){
+            e.printStackTrace();
+            
+        }
+        return produto;
     }
 
     public Produto buscarPorId(Integer id) {
@@ -38,7 +45,9 @@ public class ProdutoService {
 
     public List<Produto> listarTodos() {
 
-        return produtoRepository.findAll();
+        return produtoRepository.findAll(
+        Sort.by(Sort.Direction.DESC, "id"
+                ));
     }
 
     public Produto atualizar(Integer id, Produto produtoAtualizado) {

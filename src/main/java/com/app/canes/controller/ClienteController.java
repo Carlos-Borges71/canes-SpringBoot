@@ -33,6 +33,8 @@ public class ClienteController {
     public ClienteController(ClienteService service) {
         this.service = service;
     }
+    
+    
 
     @GetMapping
     public String listarClientes(Model model) {
@@ -49,7 +51,9 @@ public class ClienteController {
         BindingResult result) {
 
     if (result.hasErrors()) {
-        return "cliente-cadastro";
+         result.getAllErrors()
+              .forEach(System.out::println);
+         return "cliente-cadastro";
     }
         
         Cliente cliente;

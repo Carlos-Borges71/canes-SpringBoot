@@ -1,3 +1,13 @@
+document
+        .addEventListener("DOMContentLoaded", () => {
+    const campoPesquisa = document.getElementById("txtPesquisa");
+
+    if (campoPesquisa) {
+        campoPesquisa.focus();
+    }
+});
+
+
 const pesquisa = document
         .getElementById("txtPesquisa");
 
@@ -34,3 +44,23 @@ function novoProduto(){
    
     window.location.href="/cadastro_produto";
 }
+
+function prepararExclusao(botao) {
+
+    const id = botao.dataset.id;
+    const nome = botao.dataset.nome;
+
+    document.getElementById("nomeProduto")
+            .textContent = nome;
+
+    document.getElementById("btnConfirmarExcluir")
+            .href = "/produtos/excluir/" + id;
+}
+
+const modalExcluir = document.getElementById('modalExcluir');
+
+modalExcluir.addEventListener('hidden.bs.modal', function () {
+
+    document.querySelector('.btn-novo').focus();
+
+});

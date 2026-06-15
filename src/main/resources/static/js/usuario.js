@@ -1,32 +1,41 @@
+document
+        .addEventListener("DOMContentLoaded", () => {
+            const campoPesquisa = document.getElementById("txtPesquisa");
+
+            if (campoPesquisa) {
+                campoPesquisa.focus();
+            }
+        });
+
 const pesquisa = document
-.getElementById("txtPesquisa");
+        .getElementById("txtPesquisa");
 
 pesquisa.addEventListener("keyup", () => {
 
     let filtro =
-    pesquisa.value.toLowerCase();
+            pesquisa.value.toLowerCase();
 
     let linhas =
-    document.querySelectorAll(
-    "#tblUsuarios tbody tr"
-    );
+            document.querySelectorAll(
+                    "#tblUsuarios tbody tr"
+                    );
 
     linhas.forEach(linha => {
 
-    let textoLinha =
-        linha.textContent.toLowerCase();
+        let textoLinha =
+                linha.textContent.toLowerCase();
 
-    linha.style.display =
-        textoLinha.includes(filtro)
-        ? ""
-        : "none";
+        linha.style.display =
+                textoLinha.includes(filtro)
+                ? ""
+                : "none";
+
+    });
 
 });
 
-});
-
-function voltar(){
-    window.location.href="/menu";
+function voltar() {
+    window.location.href = "/menu";
 }
 
 

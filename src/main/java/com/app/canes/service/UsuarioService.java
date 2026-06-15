@@ -60,4 +60,13 @@ public class UsuarioService {
 
         usuarioRepository.delete(endereco);
     }
+    
+   public Usuario autenticar(
+        String login,
+        String senha) {
+
+    return usuarioRepository
+            .findByLoginAndSenha(login, senha)
+            .orElse(null);
+}
 }

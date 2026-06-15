@@ -26,7 +26,9 @@
             </div>
 
             <div class="usuario">
-                Carlos Borges
+                <strong
+                    th:text="${usuarioLogado.nome}">
+                </strong>
             </div>
 
         </header>
@@ -39,7 +41,8 @@
 
                 <div class="acoes">
                     <button class="btn-novo"
-                            onclick="novoUsuario()">
+                            onclick="novoUsuario()"
+                        th:classappend="${usuarioLogado.setor == 'VENDA' || usuarioLogado.setor == 'ADMINISTRATIVO'} ? ' disabled' : ''">
                         <i class="bi bi-plus-circle"></i>
                         Novo usuário
                     </button>
@@ -99,12 +102,16 @@
 
                             <td>
 
-                                <a th:href="@{/usuarios/editar/{id}(id=${usuario.id})}"
-                                   class="btn-editar">
+                                 <a th:href="@{/usuarios/editar/{id}(id=${usuario.id})}"
+                                   class="btn-editar"
+                                   th:classappend="${usuarioLogado.setor == 'VENDA' || usuarioLogado.setor == 'ADMINISTRATIVO'} ? ' disabled' : ''">
+
                                     <i class="bi bi-pencil"></i>
+
                                 </a>
 
                                 <a class="btn-excluir"
+                                   th:classappend="${usuarioLogado.setor == 'VENDA'|| usuarioLogado.setor == 'ADMINISTRATIVO'} ? ' disabled' : ''"
                                    data-bs-toggle="modal"
                                    data-bs-target="#modalExcluir"
                                    th:data-id="${usuario.id}"
@@ -112,6 +119,7 @@
                                    onclick="prepararExclusao(this)">
 
                                     <i class="bi bi-trash"></i>
+
                                 </a>
 
                             </td>

@@ -38,14 +38,7 @@ public class Cliente implements PessoaContato {
     @JoinColumn(name = "endereco_id")
     private Endereco endereco;
 
-    @ManyToMany
-    @JoinTable(
-            name = "cliente_produto",
-            joinColumns = @JoinColumn(name = "cliente_id"),
-            inverseJoinColumns = @JoinColumn(name = "produto_id")
-    )
-    private List<Produto> produtos;
-
+   
     public Cliente() {
 
         this.telefone = new Telefone();
@@ -102,13 +95,4 @@ public class Cliente implements PessoaContato {
     public void setEndereco(Endereco endereco) {
         this.endereco = endereco;
     }
-
-    public List<Produto> getProdutos() {
-        return produtos;
-    }
-
-    public void setProdutos(List<Produto> produtos) {
-        this.produtos = produtos;
-    }
-
 }
